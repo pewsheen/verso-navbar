@@ -1,11 +1,13 @@
 <script>
-  import { Button, Input } from 'flowbite-svelte';
+  import { Input } from 'flowbite-svelte';
   import PrevPageIcon from '@images/arrow-left.png';
   import NextPageIcon from '@images/arrow-right.png';
   import RefreshIcon from '@images/refresh.png';
   import CloseIcon from '@images/close.png';
   import MaximizeIcon from '@images/maximize.png';
   import MinimizeIcon from '@images/minimize.png';
+
+  import NavBtn from './btn.svelte';
 
   function onClickPrev() {
     console.log('click prev');
@@ -36,21 +38,9 @@
 <div class="navbar box-border w-full">
   <div class="inline-block w-full">
     <div class="inline-block w-1/4">
-      <Button
-        on:click={onClickPrev}
-        class="btn bg-slate-50 hover:bg-slate-100 active:bg-slate-200 h-7 w-7 !p-2"
-        ><img alt="previous page" src={PrevPageIcon} /></Button
-      >
-      <Button
-        on:click={onClickForward}
-        class="btn bg-slate-50 hover:bg-slate-100 active:bg-slate-200 h-7 w-7 !p-2"
-        ><img alt="forward page" src={NextPageIcon} /></Button
-      >
-      <Button
-        on:click={onClickRefresh}
-        class="btn bg-slate-50 hover:bg-slate-100 active:bg-slate-200 h-7 w-7 !p-2"
-        ><img alt="refresh page" src={RefreshIcon} /></Button
-      >
+      <NavBtn on:click={onClickPrev} icon={PrevPageIcon} />
+      <NavBtn on:click={onClickForward} icon={NextPageIcon} />
+      <NavBtn on:click={onClickRefresh} icon={RefreshIcon} />
     </div>
     <div class="inline-block w-1/2">
       <Input
@@ -60,35 +50,14 @@
       />
     </div>
     <div class="float-right inline-block">
-      <Button
-        on:click={onClickMinimize}
-        class="btn bg-slate-50 hover:bg-slate-100 active:bg-slate-200 h-7 w-7 !p-2"
-        ><img alt="minimize window" src={MinimizeIcon} /></Button
-      >
-      <Button
-        on:click={onClickMaximize}
-        class="btn bg-slate-50 hover:bg-slate-100 active:bg-slate-200 h-7 w-7 !p-2"
-        ><img alt="maximize window" src={MaximizeIcon} /></Button
-      >
-      <Button
-        on:click={onClickClose}
-        class="btn bg-slate-50 hover:bg-slate-100 active:bg-slate-200 h-7 w-7 !p-2"
-        ><img alt="close window" src={CloseIcon} /></Button
-      >
+      <NavBtn on:click={onClickMinimize} icon={MinimizeIcon} />
+      <NavBtn on:click={onClickMaximize} icon={MaximizeIcon} />
+      <NavBtn on:click={onClickClose} icon={CloseIcon} />
     </div>
   </div>
 </div>
 
 <style lang="scss">
-  :global(.btn) {
-    background-color: #fafafa;
-    &:hover {
-      background-color: #f0f0f0;
-    }
-    &:active {
-      background-color: #cdcdcd;
-    }
-  }
   .navbar {
     background-color: #fafafa;
     height: 38px;
